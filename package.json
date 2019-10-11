@@ -1,0 +1,7 @@
+{
+  "name": "PicturePuzzle",
+  "version": "1.0.0",
+  "dependencies": {
+    "firebase": "^7.1.0"
+  }
+}

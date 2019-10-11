@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Eagles Team</title>
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/Pic-Puzzle.css" rel="stylesheet" />
+  <script src="js/PicPuzzle.js"></script>
+</head>
+
+  <body>
+  <div id="collage">
+    <h2>Picture Puzzle</h2>
+    <hr />
+    <div id="playPanel" style="padding:5px;display:none;">
+      <h3 id="picTitle"></h3>
+      <hr />
+      <div style="display:inline-block; margin:auto; width:95%; vertical-align:top;">
+        <ul id="sortable" class="sortable"></ul>
+        <div id="actualPictureBox">
+          <div id="stepBox">
+            <div>Steps:</div>
+            <div id="stepCount" class="stepCount">0</div>
+          </div>
+
+          <img id="actualPicture" />
+          <div>Re-arrange to create a picture like this.</div>
+          <p id="levelPanel">
+            <input type="radio" name="level" id="easy" checked="checked" value="3" onchange="picPuzzle.startGame(pictures, this.value);"
+            /> <label for="easy">Easy</label>
+            <input type="radio" name="level" id="medium" value="4" onchange="picPuzzle.startGame(pictures, this.value);" />                        <label for="medium">Medium</label>
+            <input type="radio" name="level" id="hard" value="5" onchange="picPuzzle.startGame(pictures, this.value);" />                        <label for="hard">Hard</label>
+          </p>
+          <div>
+            <button id="btnRule" type="button" class="btn" onclick="rules();">Rules</button>
+            <button id="newPhoto" type="button" class="btn" onclick="restart();">Another Photo</button>
+            <button id="btnReplay" type="button" class="btn" onclick="about();">About</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="done" style="display:none;">
+      <div style="background-color: #D3D3D3; padding: 5px 10px 20px 10px; text-align: center; ">
+        <h2 style="text-align:center">GG, Well Done!</h2>
+        Congratulations!! <br /> You have completed this picture.
+        <br /> Steps: <span id="stepCount" class="stepCount">0</span> steps.
+        <br /> Time Taken: <span class="timeCount">0</span> seconds<br />
+        <div>
+          <button type="button" onclick="window.location.reload(true);">Try Again</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const pictures = [
+        {src: 'Pictures/london-bridge.jpg', title: 'London Bridge'},
+        {src: 'Pictures/lotus-temple.jpg', title: 'Lotus Temple'},
+        {src: 'Pictures/qutub-minar.jpg', title: 'Qutub Minar'},
+        {src: 'Pictures/statue-of-liberty.jpg', title: 'Statue Of Liberty'},
+        {src: 'Pictures/taj-mahal.jpg', title: 'Taj Mahal'},
+        {src: 'Pictures/pyramids1.jpg', title: 'Pyramids'},
+        {src: 'Pictures/batu-caves.jpg', title: "Batu Caves"},
+        {src: 'Pictures/iconic-paris.jpg', title: "Iconic Paris"}
+      ];
+      window.onload = function () {
+        var gridSize = document.querySelector('#levelPanel input[type="radio"]:checked').getAttribute('value');
+        picPuzzle.startGame(pictures, gridSize);
+      };
+      function restart() {
+        var gridSize = document.querySelector('#levelPanel input[type="radio"]:checked').getAttribute('value');
+        picPuzzle.startGame(pictures, gridSize);
+      }
+      function rules() {
+        alert('Re arrange the image parts in a way that it correctly forms the picture. \nThe no. of steps taken will be counted.');
+      }
+      function about() {
+        alert('Developed by Eagles');
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </div>
+  </body>
+</html>
