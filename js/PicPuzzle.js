@@ -1,90 +1,100 @@
 let timerFunction;
 
-
-
-
 var picPuzzle = {
     stepCount: 0,
     startTime: new Date().getTime(),
-    startGame: function (pictures, gridSize) {
-        this.setPicture(pictures, gridSize)
-        helper.doc('playPanel').style.display = 'block';
-        helper.shuffle('sortable');
+    startGame: function(pictures, gridSize) {
+        this.setPicture(pictures, gridSize);
+        helper.doc("playPanel").style.display = "block";
+        helper.shuffle("sortable");
         this.stepCount = 0;
         this.startTime = new Date().getTime();
         this.tick();
-
     },
-    tick: function () {
+    tick: function() {
         var now = new Date().getTime();
         let elapsedTime = parseInt(((now - picPuzzle.startTime) / 1000, 10));
-        helper.doc('timerPanel').textContent = elapsedTime;
-        timerFunction = setTimeout(picPuzzle.tick, 1000)
+        helper.doc("timerPanel").textContent = elapsedTime;
+        timerFunction = setTimeout(picPuzzle.tick, 1000);
     },
-    setPicture: function (pictures, gridSize = 4) {
+    setPicture: function(pictures, gridSize = 4) {
         var percentage = 100 / (gridSize - 1);
         var picture = pictures[Math.floor(Math.random() * pictures.length)];
-        helper.doc('picTitle').innerHTML = picture.title;
-        helper.doc('actualPicture').setAttribute('src', picture.src);
-        helper.doc('sortable').innerHTML= '';
-        for (var i = 0; i < gridSize * gridSize; i++){
-            var xpos = (percentage * (i % gridSize)) + '%';
-            var ypos = (percentage * Math.floor(i / gridSize)) + '%';
+        helper.doc("picTitle").innerHTML = picture.title;
+        helper.doc("actualPicture").setAttribute("src", picture.src);
+        helper.doc("sortable").innerHTML = "";
+        for (var i = 0; i < gridSize * gridSize; i++) {
+            var xpos = percentage * (i % gridSize) + "%";
+            var ypos = percentage * Math.floor(i / gridSize) + "%";
 
-
-            let li = document.createElement('li');
+            let li = document.createElement("li");
             li.id = i;
-            li.setAttribute('data-value', i);
-            li.style.backgroundImage= 'url(' + picture.src + ')';
-            li.style.backgroundSize = (gridSize * 100) + '%';
-            li.style.backgroundPosition = xpos + ' ' + ypos;
-            li.style.width = 400 / gridSize + 'px';
-            li.style.height = 400 / gridSize + 'px';
+            li.setAttribute("data-value", i);
+            li.style.backgroundImage = "url(" + picture.src + ")";
+            li.style.backgroundSize = gridSize * 100 + "%";
+            li.style.backgroundPosition = xpos + " " + ypos;
+            li.style.width = 400 / gridSize + "px";
+            li.style.height = 400 / gridSize + "px";
 
-            li.setAttribute('draggable', 'true');
-            li.ondragstart = (event) => event.dataTransfer.setData('data', event.target.id);
-            li.ondragover = (event) => event.preventDefault();
-            li.ondrop = (event) => {
-                var origin = helper.doc(event.dataTransfer.getData('data'));
+            li.setAttribute("draggable", "true");
+            li.ondragstart = event =>
+                event.dataTransfer.setData("data", event.target.id);
+            li.ondragover = event => event.preventDefault();
+            li.ondrop = event => {
+                var origin = helper.doc(event.dataTransfer.getData("data"));
                 var dest = helper.doc(event.target.id);
-                var p =dest.parentNode;
+                var p = dest.parentNode;
 
-                if (origin && dest && p){
-                    let tmp = dest.nextElementSibling;
-                    p.insertBefore(dest, origin);
-                    p.insertBefore(origin, tmp);
+                if (origin && dest && p) {
+                    let children = p.children;
+                    let after = [];
+                    for (let i = 0; i < children.length; i++) {
+                        let e = children.item(i);
+                        if (e == dest) after.push(origin);
+                        else if (e == origin) after.push(dest);
+                        else after.push(e);
+                    }
 
-                    let vals = Array.from(helper.doc('sortable').children).map(x => x.id);
+                    after.forEach(e => p.appendChild(e));
+
+                    let vals = Array.from(helper.doc("sortable").children).map(
+                        x => x.id
+                    );
                     const now = new Date().getTime();
-                    helper.doc('stepCount').textContent = ++picPuzzle.stepCount;
-                    document.querySelector('.timeCount').textContent = (parseInt(( now - picPuzzle.startTime) / 1000, 10));
+                    helper.doc("stepCount").textContent = ++picPuzzle.stepCount;
+                    document.querySelector(".timeCount").textContent = parseInt(
+                        (now - picPuzzle.startTime) / 1000,
+                        10
+                    );
 
-
-
-                    if (isSorted(vals)){
-                        helper.doc('actualPictureBox').innerHTML = helper.doc('done').innerHTML;
-                        helper.doc('stepCount').textContent = picPuzzle.stepCount;
+                    if (isSorted(vals)) {
+                        helper.doc("actualPictureBox").innerHTML = helper.doc(
+                            "done"
+                        ).innerHTML;
+                        helper.doc("stepCount").textContent =
+                            picPuzzle.stepCount;
                     }
                 }
-
             };
-            li.setAttribute('dragstart', 'true');
-            helper.doc('sortable').appendChild(li);
+            li.setAttribute("dragstart", "true");
+            helper.doc("sortable").appendChild(li);
         }
-            helper.shuffle('sortable');
+        helper.shuffle("sortable");
     }
-
 };
 
-            isSorted = (arr) => arr.every((elem, index) => { return elem == index; });
+isSorted = arr =>
+    arr.every((elem, index) => {
+        return elem == index;
+    });
 
-            var helper = {
-                doc: (id) => document.getElementById(id) || document.createElement('div'),
+var helper = {
+    doc: id => document.getElementById(id) || document.createElement("div"),
 
-                shuffle: (id) => {
-                    var ul = document.getElementById(id);
-                    for (var i = ul.children.length; i >= 0; i--){
-                        ul.appendChild(ul.children[Math.random() * i | 0]);
-                    }
-                }
-            }
+    shuffle: id => {
+        var ul = document.getElementById(id);
+        for (var i = ul.children.length; i >= 0; i--) {
+            ul.appendChild(ul.children[(Math.random() * i) | 0]);
+        }
+    }
+};
