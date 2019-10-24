@@ -3,10 +3,22 @@ let timerFunction;
 var picPuzzle = {
     stepCount: 0,
     startTime: new Date().getTime(),
+    score: function () {
+
+        return 100000 - (picPuzzle.stepCount * Math.ceil((1000 + Math.random()*1000)));
+
+    },
     startGame: function(pictures, gridSize) {
         this.setPicture(pictures, gridSize);
         helper.doc("playPanel").style.display = "block";
-        helper.shuffle("sortable");
+
+        let vals;
+        do {
+            helper.shuffle("sortable");
+            vals = Array.from(helper.doc("sortable").children).map(
+                x => x.id
+            );
+        } while (isSorted(vals));
         this.stepCount = 0;
         this.startTime = new Date().getTime();
         this.tick();
@@ -35,6 +47,9 @@ var picPuzzle = {
             li.style.backgroundPosition = xpos + " " + ypos;
             li.style.width = 400 / gridSize + "px";
             li.style.height = 400 / gridSize + "px";
+
+
+
 
             li.setAttribute("draggable", "true");
             li.ondragstart = event =>
@@ -73,12 +88,14 @@ var picPuzzle = {
                         ).innerHTML;
                         helper.doc("stepCount").textContent =
                             picPuzzle.stepCount;
+                        helper.doc("score").textContent = picPuzzle.score();
                     }
                 }
             };
             li.setAttribute("dragstart", "true");
             helper.doc("sortable").appendChild(li);
         }
+
         helper.shuffle("sortable");
     }
 };
@@ -92,8 +109,9 @@ var helper = {
     doc: id => document.getElementById(id) || document.createElement("div"),
 
     shuffle: id => {
+
         var ul = document.getElementById(id);
-        for (var i = ul.children.length; i >= 0; i--) {
+        for (var i = ul.children.length ; i > 0; i--) {
             ul.appendChild(ul.children[(Math.random() * i) | 0]);
         }
     }
