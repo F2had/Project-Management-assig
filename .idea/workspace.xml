@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9021cacc-4e8c-480e-8cfb-608ccae17358" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-2.1.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/jquery-ui.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/batu-caves.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/batu-caves.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/iconic-paris.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/london-bridge.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/london-bridge.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/lotus-temple.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/pyramids1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/statue-of-liberty.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/statue-of-liberty.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/taj-mahal.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/taj-mahal.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/Pic-Puzzle.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Pic-Puzzle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/PicPuzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/PicPuzzle.js" afterDir="false" />
     </list>
@@ -16,10 +26,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="package.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -31,7 +41,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../image-puzzle-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -80,6 +90,7 @@
       <workItem from="1570676822114" duration="14208000" />
       <workItem from="1571466520354" duration="2631000" />
       <workItem from="1571904203168" duration="2211000" />
+      <workItem from="1572174148643" duration="2711000" />
     </task>
     <servers />
   </component>
