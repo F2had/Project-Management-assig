@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Game 2</title>
+    <link rel="stylesheet" href="/global/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="mx-auto">Matching Relation Game</h2>
+      <h3>Choose Difficulty</h3>
+      <div class="row mt-4">
+        <button type="button" class="btn btn-light" onclick="startGame('easy')">
+          <div class="col-sm p-3">
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">
+                  EASY
+                </p>
+              </div>
+            </div>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-light"
+          onclick="startGame('medium')"
+        >
+          <div class="col-sm p-3">
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">
+                  MEDIUM
+                </p>
+              </div>
+            </div>
+          </div>
+        </button>
+
+        <button type="button" class="btn btn-light" onclick="startGame('hard')">
+          <div class="col-sm p-3">
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">
+                  HARD
+                </p>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <script src="/global/js/bootstrap.min.js"></script>
+    <script>
+      function startGame(difficulty) {
+        location.href = `playgame.html?diff=${difficulty}`;
+      }
+    </script>
+  </body>
+</html>
