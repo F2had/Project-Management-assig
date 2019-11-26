@@ -26,6 +26,12 @@ let header;
 
 let rowsData = Array(N_ROWS);
 
+function initRowsData() {
+  for (let i = 0; i < N_ROWS; i++) {
+    rowsData[i] = {x: 0, y:0, h:0, w:0, object: createGraphics(0, 0)};
+  }
+}
+
 function updateSplitRows(h, w, oldData) {
   let newH = h / N_ROWS;
   let newW = w;
@@ -44,7 +50,9 @@ function updateSplitRows(h, w, oldData) {
 function updateRowsObjects(rowsData, rowsDrawingData) {
   let result = [];
   for (const row of rowsData) {
-    let current = createGraphics(row.w, row.h);
+    let current = row.object;
+    current.resizeCanvas(row.w, row.h);
+    current.clear();
     // draw here
     // TODO: draw
 
@@ -66,10 +74,8 @@ function setup() {
     windowWidth - PADDING,
     windowHeight - PADDING - header.height
   );
-
-  for (let i = 0; i < N_ROWS; i++) {
-    rowsData[i] = {};
-  }
+  
+  initRowsData();
 }
 
 function touchStarted() {
@@ -92,6 +98,5 @@ function draw() {
 
   for (const row of rowsData) {
     image(row.object, row.x, row.y, row.w, row.h);
-    row.object.remove();
   }
 }
