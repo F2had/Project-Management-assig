@@ -21,6 +21,7 @@ function error() {
 
 // p5js
 const PADDING = 40;
+const ROW_PADDING = 10;
 const D_LINE_WEIGHT = 4;
 const D_LINE_COLOR = [0, 0, 0];
 let header;
@@ -57,7 +58,14 @@ function updateRowsObjects(rowsData, rowsDrawingData) {
     current.resizeCanvas(row.w, row.h);
     current.clear();
     // draw here
-    // TODO: draw
+
+    // Image fillers
+    let rect_size = row.h - ROW_PADDING * 2;
+    // left rect
+    current.rect(ROW_PADDING, ROW_PADDING, rect_size, rect_size);
+    // right rect
+    current.rect(row.w - ROW_PADDING - rect_size, ROW_PADDING, rect_size, rect_size);
+
 
     row.object = current;
   }
