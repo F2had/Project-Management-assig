@@ -30,6 +30,8 @@ let rowsData = Array(N_ROWS);
 let lines = [];
 let currentLine;
 
+let rectsToCheck = {};
+
 function initRowsData() {
   for (let i = 0; i < N_ROWS; i++) {
     rowsData[i] = { x: 0, y: 0, h: 0, w: 0, object: createGraphics(0, 0) };
@@ -51,9 +53,29 @@ function updateSplitRows(h, w, oldData) {
   }
 }
 
+function addRectsToCheck(x, y, size, name) {
+  rectsToCheck[name] = { x, y, size };
+}
+
+function getNearestRect(x, y) {
+  function isInsideRect(x, y, rx, ry, size) {
+    return x >= rx && y >= ry && x <= rx + size && y <= ry + size;
+  }
+
+  for (const rectEntry of Object.entries(rectsToCheck)) {
+    let rect = rectEntry[1];
+    if (isInsideRect(x, y, rect.x, rect.y, rect.size))
+      return [rect.x + rect.size / 2, rect.y + rect.size / 2, rectEntry[0]];
+  }
+
+  return [x, y, null];
+}
+
 function updateRowsObjects(rowsData, rowsDrawingData) {
   let result = [];
+  let rowC = 0;
   for (const row of rowsData) {
+    rowC++;
     let current = row.object;
     current.resizeCanvas(row.w, row.h);
     current.clear();
@@ -64,8 +86,20 @@ function updateRowsObjects(rowsData, rowsDrawingData) {
     // left rect
     current.rect(ROW_PADDING, ROW_PADDING, rect_size, rect_size);
     // right rect
-    current.rect(row.w - ROW_PADDING - rect_size, ROW_PADDING, rect_size, rect_size);
+    current.rect(
+      row.w - ROW_PADDING - rect_size,
+      ROW_PADDING,
+      rect_size,
+      rect_size
+    );
 
+    addRectsToCheck(ROW_PADDING, row.y + ROW_PADDING, rect_size, `l${rowC}`);
+    addRectsToCheck(
+      row.w - ROW_PADDING - rect_size,
+      row.y + ROW_PADDING,
+      rect_size,
+      `r${rowC}`
+    );
 
     row.object = current;
   }
@@ -96,6 +130,9 @@ function touchStarted() {
     end: [mouseX, mouseY],
     color: [255, 125, 0] // TODO: change to some color
   };
+
+  let nearest = getNearestRect(mouseX, mouseY);
+  currentLine.start = [nearest[0], nearest[1]];
   return false;
 }
 
@@ -107,10 +144,19 @@ function touchMoved() {
 function touchEnded() {
   drawing = false;
   currentLine.end = [mouseX, mouseY];
-  // TODO: choose color based on state of the line (correct or not)
-  // TODO: collect score here
-  currentLine.color = null;
-  lines.push(currentLine);
+  let nearest = getNearestRect(mouseX, mouseY);
+
+  // only record if it is in a rect.
+  if (nearest[2]) {
+    // and the start also
+    if (getNearestRect(currentLine.start[0], currentLine.start[1])[2]) {
+      currentLine.end = [nearest[0], nearest[1]];
+      // TODO: choose color based on state of the line (correct or not)
+      // TODO: collect score here
+      currentLine.color = null;
+      lines.push(currentLine);
+    }
+  }
   currentLine = null;
   return false;
 }
