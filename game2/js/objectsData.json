@@ -1,5 +1,14 @@
 {
-    "easy": {},
-    "medium": {},
-    "hard": {}   
+  "easy": [],
+  "medium": [],
+  "hard": [
+    ["badminton.jpg", "badminton player.jpg"],
+    ["baseball.jpg", "baseball player.png"],
+    ["basketball.PNG", "basketball player.jpg"],
+    ["computer.jpg", "mouse.jpg"],
+    ["money.jpg", "wallet.jpg"],
+    ["soccer.jpg", "soccer player.jpg"],
+    ["feet.jpg", "shoes.png"],
+    ["key.jpg", "lock.jpg"]
+  ]
 }

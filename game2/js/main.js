@@ -4,10 +4,6 @@ const difficultyFunctions = { easy: easy, medium: medium, hard: hard };
 
 const N_ROWS = 4;
 
-// initialize based on level chosen.
-// TODO: use it
-let levelData;
-
 function easy() {}
 
 function medium() {}
@@ -19,19 +15,19 @@ function error() {
   noLoop();
 }
 
-function handleObjectsData(e) {
+function handleObjectsData(e, callback) {
   let request = e.target;
   try {
     let data = JSON.parse(request.response);
-    levelData = data[difficulty];
+    callback(data[difficulty]);
   } catch (e) {
     console.error(e);
   }
 }
 
-function readObjectsData() {
+function readObjectsData(callback) {
   let request = new XMLHttpRequest();
-  request.onload = handleObjectsData;
+  request.onload = e => handleObjectsData(e, callback);
   request.open("GET", "js/objectsData.json");
   request.send();
 }
@@ -48,6 +44,8 @@ let lines = [];
 let currentLine;
 
 let rectsToCheck = {};
+
+let levelData;
 
 function initRowsData() {
   for (let i = 0; i < N_ROWS; i++) {
@@ -88,15 +86,14 @@ function getNearestRect(x, y) {
   return [x, y, null];
 }
 
-function updateRowsObjects(rowsData, rowsDrawingData) {
+function updateRowsObjects(rowsData, levelRowsDrawingData) {
   let result = [];
   let rowC = 0;
+
   for (const row of rowsData) {
-    rowC++;
     let current = row.object;
     current.resizeCanvas(row.w, row.h);
     current.clear();
-    // draw here
 
     // Image fillers
     let rect_size = row.h - ROW_PADDING * 2;
@@ -104,6 +101,21 @@ function updateRowsObjects(rowsData, rowsDrawingData) {
     current.rect(ROW_PADDING, ROW_PADDING, rect_size, rect_size);
     // right rect
     current.rect(
+      row.w - ROW_PADDING - rect_size,
+      ROW_PADDING,
+      rect_size,
+      rect_size
+    );
+
+    current.image(
+      levelRowsDrawingData[rowC][0],
+      ROW_PADDING,
+      ROW_PADDING,
+      rect_size,
+      rect_size
+    );
+    current.image(
+      levelRowsDrawingData[rowC][1],
       row.w - ROW_PADDING - rect_size,
       ROW_PADDING,
       rect_size,
@@ -119,13 +131,13 @@ function updateRowsObjects(rowsData, rowsDrawingData) {
     );
 
     row.object = current;
+    rowC++;
   }
   return result;
 }
 
 function initRowsDrawingData() {
-  // TODO: implement
-  return null;
+  return levelData.slice(0, N_ROWS);
 }
 
 function setup() {
@@ -138,7 +150,17 @@ function setup() {
   );
 
   initRowsData();
-  readObjectsData();
+  let counter = 0;
+  readObjectsData(levelD => {
+    levelD.forEach((e, i) =>
+      e.forEach((ee, ii) =>
+        loadImage(`images/${difficulty}/` + ee, m => {
+          levelD[i][ii] = m;
+          if (++counter == levelD.length * 2) levelData = levelD;
+        })
+      )
+    );
+  });
 }
 
 function touchStarted() {
@@ -214,13 +236,16 @@ function draw() {
   background(200);
   resizeCanvas(windowWidth - PADDING, windowHeight - PADDING - header.height);
 
-  updateSplitRows(height, width, rowsData);
-  let rowsDrawingData = initRowsDrawingData();
-  updateRowsObjects(rowsData, rowsDrawingData);
+  // check if there is any data/images to  draw
+  if (levelData) {
+    updateSplitRows(height, width, rowsData);
+    let levelRowsDrawingData = initRowsDrawingData();
+    updateRowsObjects(rowsData, levelRowsDrawingData);
 
-  for (const row of rowsData) {
-    image(row.object, row.x, row.y, row.w, row.h);
+    for (const row of rowsData) {
+      image(row.object, row.x, row.y, row.w, row.h);
+    }
+
+    drawLines();
   }
-
-  drawLines();
 }
