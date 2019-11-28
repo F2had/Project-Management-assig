@@ -53,8 +53,8 @@ var picPuzzle = {
             li.style.backgroundImage = "url(" + picture.src + ")";
             li.style.backgroundSize = gridSize * 100 + "%";
             li.style.backgroundPosition = xpos + " " + ypos;
-            li.style.width = 600 / gridSize + "px";
-            li.style.height = 600 / gridSize + "px";
+            li.style.width = 599 / gridSize + "px";
+            li.style.height = 599 / gridSize + "px";
 
 
 

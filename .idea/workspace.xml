@@ -2,45 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9021cacc-4e8c-480e-8cfb-608ccae17358" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Camel.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Cat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/ChinSweeCavesTemple.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Colosseum.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Dog.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Famosa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Flamingos.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/GeorgeTown.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Horses.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/PutaJaya.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Qutubminar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/Resi.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/bald.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/bluemosque.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/bparrot.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/scarletmacaws.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/statueofliberty.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/tajmahal.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/game1/Pictures/whiterhinos.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/database.rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/bald_eagle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/blue-mosque.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/blue_parrot.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/camel.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/cat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/colosseum.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/famosa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/flamingos.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/horses.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/qutub-minar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/scarlet_macaws.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/statue-of-liberty.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/taj-mahal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/Pictures/white_rhinos.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/audio/Ta Da.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/game1/audio/Ta Da.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game1/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/game1/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/game1/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game1/js/PicPuzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/game1/js/PicPuzzle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game2/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/game2/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game2/js/objectsData.json" beforeDir="false" afterPath="$PROJECT_DIR$/game2/js/objectsData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +92,7 @@
       <workItem from="1574949425028" duration="3014000" />
       <workItem from="1574960950030" duration="879000" />
       <workItem from="1574962445265" duration="2984000" />
-      <workItem from="1574965979300" duration="1748000" />
+      <workItem from="1574965979300" duration="11029000" />
     </task>
     <servers />
   </component>

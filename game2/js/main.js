@@ -197,7 +197,13 @@ function touchEnded() {
     ) {
       currentLine.end = [nearest[0], nearest[1]];
       // TODO: choose color based on state of the line (correct or not)
-      // TODO: collect score here
+      /* TODO: collect score here
+
+          Note
+          There should be score for us which is how many correct and score for them anything as long as its a carmichael ;) number
+          Thanks. poss.
+
+       */
       currentLine.color = null;
       lines.push(currentLine);
     }

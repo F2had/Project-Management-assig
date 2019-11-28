@@ -1,6 +1,10 @@
 {
-  "easy": [],
-  "medium": [],
+  "easy": [
+
+  ],
+  "medium": [
+
+  ],
   "hard": [
     ["badminton.jpg", "badminton player.jpg"],
     ["baseball.jpg", "baseball player.png"],

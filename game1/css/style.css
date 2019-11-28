@@ -1,13 +1,16 @@
 body {
     font-family: 'Segoe UI', Calibri, Arial;
-    background-color: rgba(13,34,71,0.73);
+    background-color: rgba(33,150,243,0.73);
+
     margin:0;
 }
 h2{
-    font-weight:normal;
+    font-weight:bold;
     text-align:center;
+    font-size: xx-large;
 }
 h3{
+    font-size: xx-large;
     font-weight:normal;
     margin:3px 0px;
     text-align:center;
