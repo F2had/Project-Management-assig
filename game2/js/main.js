@@ -19,6 +19,23 @@ function error() {
   noLoop();
 }
 
+function handleObjectsData(e) {
+  let request = e.target;
+  try {
+    let data = JSON.parse(request.response);
+    levelData = data[difficulty];
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function readObjectsData() {
+  let request = new XMLHttpRequest();
+  request.onload = handleObjectsData;
+  request.open("GET", "js/objectsData.json");
+  request.send();
+}
+
 // p5js
 const PADDING = 40;
 const ROW_PADDING = 10;
@@ -121,6 +138,7 @@ function setup() {
   );
 
   initRowsData();
+  readObjectsData();
 }
 
 function touchStarted() {
@@ -149,7 +167,12 @@ function touchEnded() {
   // only record if it is in a rect.
   if (nearest[2]) {
     // and the start also
-    if (getNearestRect(currentLine.start[0], currentLine.start[1])[2]) {
+    let inNearest = getNearestRect(currentLine.start[0], currentLine.start[1]);
+    if (
+      inNearest[2] && // not null
+      inNearest[2] != nearest[2] && // not to itself
+      nearest[2][0] != inNearest[2][0] // not to the same column
+    ) {
       currentLine.end = [nearest[0], nearest[1]];
       // TODO: choose color based on state of the line (correct or not)
       // TODO: collect score here
