@@ -19,6 +19,23 @@ function error() {
   noLoop();
 }
 
+function handleObjectsData(e) {
+  let request = e.target;
+  try {
+    let data = JSON.parse(request.response);
+    levelData = data[difficulty];
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function readObjectsData() {
+  let request = new XMLHttpRequest();
+  request.onload = handleObjectsData;
+  request.open("GET", "js/objectsData.json");
+  request.send();
+}
+
 // p5js
 const PADDING = 40;
 const ROW_PADDING = 10;
@@ -121,6 +138,7 @@ function setup() {
   );
 
   initRowsData();
+  readObjectsData();
 }
 
 function touchStarted() {
