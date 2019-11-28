@@ -29,6 +29,15 @@ var picPuzzle = {
         helper.doc("timerPanel").textContent = elapsedTime;
         timerFunction = setTimeout(picPuzzle.tick, 1000);
     },
+    sound: function(n) {
+        if(n ==1){
+            var audio = new Audio('/game1/audio/drop.mp3');
+
+        } else if (n==2){
+            var audio = new Audio('/game1/audio/Ta Da.mp3');
+        }
+        audio.play();
+    },
     setPicture: function(pictures, gridSize = 4) {
         var percentage = 100 / (gridSize - 1);
         var picture = pictures[Math.floor(Math.random() * pictures.length)];
@@ -56,6 +65,7 @@ var picPuzzle = {
                 event.dataTransfer.setData("data", event.target.id);
             li.ondragover = event => event.preventDefault();
             li.ondrop = event => {
+               picPuzzle.sound(1);
                 var origin = helper.doc(event.dataTransfer.getData("data"));
                 var dest = helper.doc(event.target.id);
                 var p = dest.parentNode;
@@ -83,6 +93,7 @@ var picPuzzle = {
                     );
 
                     if (isSorted(vals)) {
+                        picPuzzle.sound(2);
                         helper.doc("actualPictureBox").innerHTML = helper.doc(
                             "done"
                         ).innerHTML;
