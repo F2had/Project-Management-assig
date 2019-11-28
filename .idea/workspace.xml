@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9021cacc-4e8c-480e-8cfb-608ccae17358" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game1/audio/Metal_Drop.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/game1/js/PicPuzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/game1/js/PicPuzzle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,10 +33,10 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\FA\WebstormProjects\PicturePuzzle" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\FA\WebstormProjects\PicturePuzzle" />
     </key>
   </component>
@@ -97,5 +96,75 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="555" y="214" width="800" height="677" key="#Web_Browsers" timestamp="1574942510971">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="555" y="214" width="800" height="677" key="#Web_Browsers/0.27.1920.1053@0.27.1920.1053" timestamp="1574942510971" />
+    <state width="1897" height="344" key="GridCell.Tab.0.bottom" timestamp="1574942524009">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524009" />
+    <state width="1897" height="344" key="GridCell.Tab.0.center" timestamp="1574942524008">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524008" />
+    <state width="1897" height="344" key="GridCell.Tab.0.left" timestamp="1574942524008">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524008" />
+    <state width="1897" height="344" key="GridCell.Tab.0.right" timestamp="1574942524008">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524008" />
+    <state width="1897" height="344" key="GridCell.Tab.1.bottom" timestamp="1574942524010">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524010" />
+    <state width="1897" height="344" key="GridCell.Tab.1.center" timestamp="1574942524009">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524009" />
+    <state width="1897" height="344" key="GridCell.Tab.1.left" timestamp="1574942524009">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524009" />
+    <state width="1897" height="344" key="GridCell.Tab.1.right" timestamp="1574942524009">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524009" />
+    <state width="1897" height="344" key="GridCell.Tab.2.bottom" timestamp="1574942524010">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.2.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524010" />
+    <state width="1897" height="344" key="GridCell.Tab.2.center" timestamp="1574942524010">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.2.center/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524010" />
+    <state width="1897" height="344" key="GridCell.Tab.2.left" timestamp="1574942524010">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.2.left/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524010" />
+    <state width="1897" height="344" key="GridCell.Tab.2.right" timestamp="1574942524010">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.2.right/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524010" />
+    <state width="1897" height="344" key="GridCell.Tab.3.bottom" timestamp="1574942524012">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.3.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524012" />
+    <state width="1897" height="344" key="GridCell.Tab.3.center" timestamp="1574942524011">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.3.center/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524011" />
+    <state width="1897" height="344" key="GridCell.Tab.3.left" timestamp="1574942524011">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.3.left/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524011" />
+    <state width="1897" height="344" key="GridCell.Tab.3.right" timestamp="1574942524011">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1897" height="344" key="GridCell.Tab.3.right/0.27.1920.1053@0.27.1920.1053" timestamp="1574942524011" />
   </component>
 </project>

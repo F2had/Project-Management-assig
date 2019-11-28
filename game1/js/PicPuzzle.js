@@ -92,13 +92,14 @@ var picPuzzle = {
                     );
 
                     if (isSorted(vals)) {
-                        picPuzzle.sound(2);
+
                         helper.doc("actualPictureBox").innerHTML = helper.doc(
                             "done"
                         ).innerHTML;
                         helper.doc("stepCount").textContent =
                             picPuzzle.stepCount;
                         helper.doc("score").textContent = picPuzzle.score();
+                        picPuzzle.sound(2);
                     }
                 }
             };
