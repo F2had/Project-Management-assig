@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9021cacc-4e8c-480e-8cfb-608ccae17358" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/jquery-2.1.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jquery-ui.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/batu-caves.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/batu-caves.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/iconic-paris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/london-bridge.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/london-bridge.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/lotus-temple.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/pyramids1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/statue-of-liberty.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/statue-of-liberty.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/taj-mahal.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/taj-mahal.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Pic-Puzzle.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Pic-Puzzle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/PicPuzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/PicPuzzle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game1/audio/Metal_Drop.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game1/js/PicPuzzle.js" beforeDir="false" afterPath="$PROJECT_DIR$/game1/js/PicPuzzle.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,18 +41,6 @@
       <recent name="C:\Users\FA\WebstormProjects\PicturePuzzle" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PicturePuzzle/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -74,6 +50,18 @@
         <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
