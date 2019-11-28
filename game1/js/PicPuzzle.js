@@ -62,9 +62,11 @@ var picPuzzle = {
             li.setAttribute("draggable", "true");
             li.ondragstart = event =>
                 event.dataTransfer.setData("data", event.target.id);
+
             li.ondragover = event => event.preventDefault();
+
             li.ondrop = event => {
-               picPuzzle.sound(1);
+
                 var origin = helper.doc(event.dataTransfer.getData("data"));
                 var dest = helper.doc(event.target.id);
                 var p = dest.parentNode;
@@ -89,8 +91,9 @@ var picPuzzle = {
                     document.querySelector(".timeCount").textContent = parseInt(
                         (now - picPuzzle.startTime) / 1000,
                         10
-                    );
 
+                    );
+                    picPuzzle.sound(1);
                     if (isSorted(vals)) {
 
                         helper.doc("actualPictureBox").innerHTML = helper.doc(
@@ -100,6 +103,7 @@ var picPuzzle = {
                             picPuzzle.stepCount;
                         helper.doc("score").textContent = picPuzzle.score();
                         picPuzzle.sound(2);
+
                     }
                 }
             };

@@ -2,6 +2,7 @@
   "name": "PicturePuzzle",
   "version": "1.0.0",
   "dependencies": {
-    "firebase": "^7.1.0"
+    "firebase": "^7.1.0",
+    "firebase-admin": "^8.8.0"
   }
 }
