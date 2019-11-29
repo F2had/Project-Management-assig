@@ -4,6 +4,13 @@ const difficultyFunctions = { easy: easy, medium: medium, hard: hard };
 
 const N_ROWS = 4;
 
+let correctMoves = 0;
+let wrongMoves = 0;
+
+let finished = false;
+
+let startTime = new Date().getTime();
+
 function easy() {}
 
 function medium() {}
@@ -13,6 +20,14 @@ function hard() {}
 function error() {
   alert("PLEASE, DON'T PLAY WITH THE URL.\nTHANK YOU.");
   noLoop();
+}
+
+function computeScore() {
+  let score = 100000;
+  score -= wrongMoves * 500;
+  score -= Math.ceil((new Date().getTime() - startTime) / 1000);
+  score -= Math.ceil(Math.random() * 1000);
+  return score;
 }
 
 function handleObjectsData(e, callback) {
@@ -157,10 +172,10 @@ function initRowsDrawingData() {
 function setup() {
   console.log(`welcome, you choose ${difficulty} difficulty`);
   (difficultyFunctions[difficulty] || error)();
-  header = createDiv("welcome");
+  // header = createDiv("welcome");
   let cvx = createCanvas(
-    windowWidth - PADDING,
-    windowHeight - PADDING - header.height
+    windowWidth,
+    windowHeight
   );
 
   initRowsData();
@@ -230,13 +245,19 @@ function touchEnded() {
         elseNearest = startNearest[2];
       }
 
-
       // WHAT IS THIS?????
       // I DON'T KNOW EITHER.
-      if (elseNearest[1] === levelRowsDrawingData[int(startEndNearest[1])][1][1][1])
+      if (
+        elseNearest[1] ===
+        levelRowsDrawingData[int(startEndNearest[1])][1][1][1]
+      ) {
         currentLine.color = [0, 255, 0];
-      else currentLine.color = [255, 0, 0];
-      lines.push(currentLine);
+        lines.push(currentLine);
+        correctMoves++;
+        finished = correctMoves === N_ROWS;
+      } else wrongMoves++;
+      // removed so that to not frustrate patients, there is no error line
+      //else currentLine.color = [255, 0, 0];
     }
   }
   currentLine = null;
@@ -269,9 +290,30 @@ function drawLines() {
   pop();
 }
 
+function drawWin() {
+  const RECTSIZE = { w: width * 0.75, h: height * 0.5 };
+
+  rect(
+    width / 2 - RECTSIZE.w / 2,
+    height / 2 - RECTSIZE.h / 2,
+    RECTSIZE.w,
+    RECTSIZE.h
+  );
+
+  //later
+}
+
 function draw() {
-  background(200);
-  resizeCanvas(windowWidth - PADDING, windowHeight - PADDING - header.height);
+  resizeCanvas(windowWidth - PADDING, windowHeight - PADDING);
+  background(33, 150, 243);
+
+  if (finished) {
+    // win code.
+
+    let score = computeScore();
+    alert(score);
+    noLoop();
+  }
 
   // check if there is any data/images to  draw
   if (levelData) {
