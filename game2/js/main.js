@@ -26,7 +26,7 @@ function computeScore() {
   let score = 100000;
   score -= wrongMoves * 500;
   score -= Math.ceil((new Date().getTime() - startTime) / 1000);
-  score -= Math.ceil(Math.random() * 1000);
+  score -= Math.ceil(Math.random() * 5000);
   return score;
 }
 
