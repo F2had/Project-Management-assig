@@ -311,7 +311,7 @@ function draw() {
     // win code.
 
     let score = computeScore();
-    alert(score);
+    alert(`score: ${score}`);
     noLoop();
   }
 
