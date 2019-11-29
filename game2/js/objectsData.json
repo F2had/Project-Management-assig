@@ -1,9 +1,18 @@
 {
   "easy": [
-
+    ["arrow-PM.jpg", "bow-PM.jpg"],
+    ["sun-PM.jpg", "moon-PM.jpg"],
+    ["key-PM.jpg", "door-PM.jpg"],
+    ["chess piece-PM.jpg", "chess board-PM.jpg"],
+    ["iron-PM.jpg", "clothes-PM.jpg"],
+    ["feet-PM.jpg", "shoes-PM.jpg"]
   ],
   "medium": [
-
+    ["chair-PM.jpg", "table-PM.jpg"],
+    ["hammer-PM.jpg", "nail-PM.jpg"],
+    ["pencil-PM.jpg", "paper-PM.jpg"],
+    ["comb-PM.jpg", "hair-PM.jpg"],
+    ["raining-PM.jpg", "umbrella-PM.jpg"]
   ],
   "hard": [
     ["badminton.jpg", "badminton player.jpg"],

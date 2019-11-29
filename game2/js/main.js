@@ -4,6 +4,13 @@ const difficultyFunctions = { easy: easy, medium: medium, hard: hard };
 
 const N_ROWS = 4;
 
+let correctMoves = 0;
+let wrongMoves = 0;
+
+let finished = false;
+
+let startTime = new Date().getTime();
+
 function easy() {}
 
 function medium() {}
@@ -13,6 +20,14 @@ function hard() {}
 function error() {
   alert("PLEASE, DON'T PLAY WITH THE URL.\nTHANK YOU.");
   noLoop();
+}
+
+function computeScore() {
+  let score = 100000;
+  score -= wrongMoves * 500;
+  score -= Math.ceil((new Date().getTime() - startTime) / 1000);
+  score -= Math.ceil(Math.random() * 5000);
+  return score;
 }
 
 function handleObjectsData(e, callback) {
@@ -46,6 +61,7 @@ let currentLine;
 let rectsToCheck = {};
 
 let levelData;
+let levelRowsDrawingData;
 
 function initRowsData() {
   for (let i = 0; i < N_ROWS; i++) {
@@ -86,7 +102,7 @@ function getNearestRect(x, y) {
   return [x, y, null];
 }
 
-function updateRowsObjects(rowsData, levelRowsDrawingData) {
+function updateRowsObjects(rowsData) {
   let result = [];
   let rowC = 0;
 
@@ -108,14 +124,14 @@ function updateRowsObjects(rowsData, levelRowsDrawingData) {
     );
 
     current.image(
-      levelRowsDrawingData[rowC][0],
+      levelRowsDrawingData[rowC][0][0],
       ROW_PADDING,
       ROW_PADDING,
       rect_size,
       rect_size
     );
     current.image(
-      levelRowsDrawingData[rowC][1],
+      levelRowsDrawingData[rowC][1][0],
       row.w - ROW_PADDING - rect_size,
       ROW_PADDING,
       rect_size,
@@ -137,16 +153,29 @@ function updateRowsObjects(rowsData, levelRowsDrawingData) {
 }
 
 function initRowsDrawingData() {
-  return levelData.slice(0, N_ROWS);
+  let initRowData = levelData.slice(0, N_ROWS).map((e, i) => [
+    [e[0], `l${i}`],
+    [e[1], `r${i}`]
+  ]);
+
+  function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i][1], a[j][1]] = [a[j][1], a[i][1]];
+    }
+    return a;
+  }
+
+  return shuffle(initRowData);
 }
 
 function setup() {
   console.log(`welcome, you choose ${difficulty} difficulty`);
   (difficultyFunctions[difficulty] || error)();
-  header = createDiv("welcome");
+  // header = createDiv("welcome");
   let cvx = createCanvas(
-    windowWidth - PADDING,
-    windowHeight - PADDING - header.height
+    windowWidth,
+    windowHeight
   );
 
   initRowsData();
@@ -156,7 +185,11 @@ function setup() {
       e.forEach((ee, ii) =>
         loadImage(`images/${difficulty}/` + ee, m => {
           levelD[i][ii] = m;
-          if (++counter == levelD.length * 2) levelData = levelD;
+          // End of initialization of images.
+          if (++counter == levelD.length * 2) {
+            levelData = levelD;
+            levelRowsDrawingData = initRowsDrawingData();
+          }
         })
       )
     );
@@ -184,28 +217,47 @@ function touchMoved() {
 function touchEnded() {
   drawing = false;
   currentLine.end = [mouseX, mouseY];
-  let nearest = getNearestRect(mouseX, mouseY);
+  let endNearest = getNearestRect(mouseX, mouseY);
 
   // only record if it is in a rect.
-  if (nearest[2]) {
+  if (endNearest[2]) {
     // and the start also
-    let inNearest = getNearestRect(currentLine.start[0], currentLine.start[1]);
+    let startNearest = getNearestRect(
+      currentLine.start[0],
+      currentLine.start[1]
+    );
     if (
-      inNearest[2] && // not null
-      inNearest[2] != nearest[2] && // not to itself
-      nearest[2][0] != inNearest[2][0] // not to the same column
+      startNearest[2] && // not null
+      startNearest[2] != endNearest[2] && // not to itself
+      endNearest[2][0] != startNearest[2][0] // not to the same column
     ) {
-      currentLine.end = [nearest[0], nearest[1]];
-      // TODO: choose color based on state of the line (correct or not)
-      /* TODO: collect score here
+      currentLine.end = [endNearest[0], endNearest[1]];
 
-          Note
-          There should be score for us which is how many correct and score for them anything as long as its a carmichael ;) number
-          Thanks. poss.
+      // WHAT ARE THESE NAMES????????
+      // I DON'T KNOW EITHER.
+      let startEndNearest, elseNearest;
 
-       */
-      currentLine.color = null;
-      lines.push(currentLine);
+      if (startNearest[2][0] === "r") {
+        startEndNearest = startNearest[2];
+        elseNearest = endNearest[2];
+      } else {
+        startEndNearest = endNearest[2];
+        elseNearest = startNearest[2];
+      }
+
+      // WHAT IS THIS?????
+      // I DON'T KNOW EITHER.
+      if (
+        elseNearest[1] ===
+        levelRowsDrawingData[int(startEndNearest[1])][1][1][1]
+      ) {
+        currentLine.color = [0, 255, 0];
+        lines.push(currentLine);
+        correctMoves++;
+        finished = correctMoves === N_ROWS;
+      } else wrongMoves++;
+      // removed so that to not frustrate patients, there is no error line
+      //else currentLine.color = [255, 0, 0];
     }
   }
   currentLine = null;
@@ -238,15 +290,35 @@ function drawLines() {
   pop();
 }
 
+function drawWin() {
+  const RECTSIZE = { w: width * 0.75, h: height * 0.5 };
+
+  rect(
+    width / 2 - RECTSIZE.w / 2,
+    height / 2 - RECTSIZE.h / 2,
+    RECTSIZE.w,
+    RECTSIZE.h
+  );
+
+  //later
+}
+
 function draw() {
-  background(200);
-  resizeCanvas(windowWidth - PADDING, windowHeight - PADDING - header.height);
+  resizeCanvas(windowWidth - PADDING, windowHeight - PADDING);
+  background(33, 150, 243);
+
+  if (finished) {
+    // win code.
+
+    let score = computeScore();
+    alert(`score: ${score}`);
+    noLoop();
+  }
 
   // check if there is any data/images to  draw
   if (levelData) {
     updateSplitRows(height, width, rowsData);
-    let levelRowsDrawingData = initRowsDrawingData();
-    updateRowsObjects(rowsData, levelRowsDrawingData);
+    updateRowsObjects(rowsData);
 
     for (const row of rowsData) {
       image(row.object, row.x, row.y, row.w, row.h);
