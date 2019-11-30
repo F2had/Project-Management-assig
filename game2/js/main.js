@@ -70,12 +70,12 @@ function initRowsData() {
 }
 
 function updateSplitRows(h, w, oldData) {
-  let newH = h / N_ROWS;
-  let newW = w;
+  let newH = h;
+  let newW = w / N_ROWS;
 
   for (let i = 0; i < N_ROWS; i++) {
-    let newY = h * (i / N_ROWS);
-    let newX = 0;
+    let newY = 0;
+    let newX = w * (i / N_ROWS);
 
     oldData[i].x = newX;
     oldData[i].y = newY;
@@ -112,13 +112,17 @@ function updateRowsObjects(rowsData) {
     current.clear();
 
     // Image fillers
-    let rect_size = row.h - ROW_PADDING * 2;
-    // left rect
+    let rect_size = row.w - ROW_PADDING * 2;
+    // set a minimum empty space size 
+    if(rect_size > (height / 2) - PADDING * 4)
+      rect_size = (height / 2) - PADDING * 4;
+
+    // top rect
     current.rect(ROW_PADDING, ROW_PADDING, rect_size, rect_size);
-    // right rect
+    // bottom rect
     current.rect(
-      row.w - ROW_PADDING - rect_size,
       ROW_PADDING,
+      row.h - ROW_PADDING - rect_size,
       rect_size,
       rect_size
     );
@@ -132,16 +136,16 @@ function updateRowsObjects(rowsData) {
     );
     current.image(
       levelRowsDrawingData[rowC][1][0],
-      row.w - ROW_PADDING - rect_size,
       ROW_PADDING,
+      row.h - ROW_PADDING - rect_size,
       rect_size,
       rect_size
     );
 
-    addRectsToCheck(ROW_PADDING, row.y + ROW_PADDING, rect_size, `l${rowC}`);
+    addRectsToCheck(row.x + ROW_PADDING, ROW_PADDING, rect_size, `l${rowC}`);
     addRectsToCheck(
-      row.w - ROW_PADDING - rect_size,
-      row.y + ROW_PADDING,
+      row.x - ROW_PADDING,
+      row.h + ROW_PADDING - rect_size,
       rect_size,
       `r${rowC}`
     );
@@ -244,6 +248,8 @@ function touchEnded() {
         startEndNearest = endNearest[2];
         elseNearest = startNearest[2];
       }
+      console.log(startEndNearest, elseNearest)
+
 
       // WHAT IS THIS?????
       // I DON'T KNOW EITHER.
