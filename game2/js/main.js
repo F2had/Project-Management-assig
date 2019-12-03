@@ -1,6 +1,6 @@
 const difficulty = new URLSearchParams(location.search).get("diff");
 
-const difficultyFunctions = { easy: easy, medium: medium, hard: hard };
+const difficultyFunctions = { level1, level2, level3 };
 
 const N_ROWS = 4;
 
@@ -11,11 +11,11 @@ let finished = false;
 
 let startTime = new Date().getTime();
 
-function easy() {}
+function level1() {}
 
-function medium() {}
+function level2() {}
 
-function hard() {}
+function level3() {}
 
 function error() {
   alert("PLEASE, DON'T PLAY WITH THE URL.\nTHANK YOU.");
@@ -70,12 +70,12 @@ function initRowsData() {
 }
 
 function updateSplitRows(h, w, oldData) {
-  let newH = h / N_ROWS;
-  let newW = w;
+  let newH = h;
+  let newW = w / N_ROWS;
 
   for (let i = 0; i < N_ROWS; i++) {
-    let newY = h * (i / N_ROWS);
-    let newX = 0;
+    let newY = 0;
+    let newX = w * (i / N_ROWS);
 
     oldData[i].x = newX;
     oldData[i].y = newY;
@@ -112,13 +112,17 @@ function updateRowsObjects(rowsData) {
     current.clear();
 
     // Image fillers
-    let rect_size = row.h - ROW_PADDING * 2;
-    // left rect
+    let rect_size = row.w - ROW_PADDING * 2;
+    // set a minimum empty space size
+    if (rect_size > height / 2 - PADDING * 4)
+      rect_size = height / 2 - PADDING * 4;
+
+    // top rect
     current.rect(ROW_PADDING, ROW_PADDING, rect_size, rect_size);
-    // right rect
+    // bottom rect
     current.rect(
-      row.w - ROW_PADDING - rect_size,
       ROW_PADDING,
+      row.h - ROW_PADDING - rect_size,
       rect_size,
       rect_size
     );
@@ -132,16 +136,16 @@ function updateRowsObjects(rowsData) {
     );
     current.image(
       levelRowsDrawingData[rowC][1][0],
-      row.w - ROW_PADDING - rect_size,
       ROW_PADDING,
+      row.h - ROW_PADDING - rect_size,
       rect_size,
       rect_size
     );
 
-    addRectsToCheck(ROW_PADDING, row.y + ROW_PADDING, rect_size, `l${rowC}`);
+    addRectsToCheck(row.x + ROW_PADDING, ROW_PADDING, rect_size, `l${rowC}`);
     addRectsToCheck(
-      row.w - ROW_PADDING - rect_size,
-      row.y + ROW_PADDING,
+      row.x - ROW_PADDING,
+      row.h + ROW_PADDING - rect_size,
       rect_size,
       `r${rowC}`
     );
@@ -173,10 +177,7 @@ function setup() {
   console.log(`welcome, you choose ${difficulty} difficulty`);
   (difficultyFunctions[difficulty] || error)();
   // header = createDiv("welcome");
-  let cvx = createCanvas(
-    windowWidth,
-    windowHeight
-  );
+  let cvx = createCanvas(windowWidth, windowHeight);
 
   initRowsData();
   let counter = 0;
@@ -244,6 +245,7 @@ function touchEnded() {
         startEndNearest = endNearest[2];
         elseNearest = startNearest[2];
       }
+      console.log(startEndNearest, elseNearest);
 
       // WHAT IS THIS?????
       // I DON'T KNOW EITHER.
@@ -304,7 +306,7 @@ function drawWin() {
 }
 
 function draw() {
-  resizeCanvas(windowWidth - PADDING, windowHeight - PADDING);
+  resizeCanvas(windowWidth, windowHeight);
   background(33, 150, 243);
 
   if (finished) {
