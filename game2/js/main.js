@@ -25,8 +25,7 @@ function error() {
 function computeScore() {
   let score = 100000;
   score -= wrongMoves * 500;
-  score -= Math.ceil((new Date().getTime() - startTime) / 1000);
-  score -= Math.ceil(Math.random() * 5000);
+  score -= Math.ceil((new Date().getTime() - startTime) / 10000);
   return score;
 }
 
@@ -313,7 +312,7 @@ function draw() {
     // win code.
 
     let score = computeScore();
-    alert(`score: ${score}`);
+    alert(`score: ${score}\n${(new Date().getTime() - startTime) / 1000} seconds`);
     noLoop();
   }
 

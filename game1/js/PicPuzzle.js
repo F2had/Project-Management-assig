@@ -5,7 +5,7 @@ var picPuzzle = {
     startTime: new Date().getTime(),
     score: function () {
 
-        return 100000 - (picPuzzle.stepCount * Math.ceil((1000 + Math.random()*1000)));
+        return 100000 - (picPuzzle.stepCount * 1000);
 
     },
     startGame: function(pictures, gridSize) {
