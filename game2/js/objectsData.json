@@ -1,27 +1,20 @@
 {
   "easy": [
-    ["arrow-PM.jpg", "bow-PM.jpg"],
     ["sun-PM.jpg", "moon-PM.jpg"],
     ["key-PM.jpg", "door-PM.jpg"],
-    ["chess piece-PM.jpg", "chess board-PM.jpg"],
-    ["iron-PM.jpg", "clothes-PM.jpg"],
-    ["feet-PM.jpg", "shoes-PM.jpg"]
-  ],
-  "medium": [
     ["chair-PM.jpg", "table-PM.jpg"],
-    ["hammer-PM.jpg", "nail-PM.jpg"],
-    ["pencil-PM.jpg", "paper-PM.jpg"],
-    ["comb-PM.jpg", "hair-PM.jpg"],
     ["raining-PM.jpg", "umbrella-PM.jpg"]
   ],
+  "medium": [
+    ["hammer-PM.jpg", "nail-PM.jpg"],
+    ["fish.png", "shark.jpg"],
+    ["pencil-PM.jpg", "paper-PM.jpg"],
+    ["eagle.jpg", "sparrow.jpg"]
+  ],
   "hard": [
-    ["badminton.jpg", "badminton player.jpg"],
-    ["baseball.jpg", "baseball player.png"],
-    ["basketball.PNG", "basketball player.jpg"],
-    ["computer.jpg", "mouse.jpg"],
     ["money.jpg", "wallet.jpg"],
     ["soccer.jpg", "soccer player.jpg"],
-    ["feet.jpg", "shoes.png"],
-    ["key.jpg", "lock.jpg"]
+    ["key.jpg", "lock.jpg"],
+    ["cow.jpg", "horse.png"]
   ]
 }
