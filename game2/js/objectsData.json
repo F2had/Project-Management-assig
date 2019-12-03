@@ -1,17 +1,17 @@
 {
-  "easy": [
+  "level1": [
     ["sun-PM.jpg", "moon-PM.jpg"],
     ["key-PM.jpg", "door-PM.jpg"],
     ["chair-PM.jpg", "table-PM.jpg"],
     ["raining-PM.jpg", "umbrella-PM.jpg"]
   ],
-  "medium": [
+  "level2": [
     ["hammer-PM.jpg", "nail-PM.jpg"],
     ["fish.png", "shark.jpg"],
     ["pencil-PM.jpg", "paper-PM.jpg"],
     ["eagle.jpg", "sparrow.jpg"]
   ],
-  "hard": [
+  "level3": [
     ["money.jpg", "wallet.jpg"],
     ["soccer.jpg", "soccer player.jpg"],
     ["key.jpg", "lock.jpg"],

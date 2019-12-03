@@ -1,6 +1,6 @@
 const difficulty = new URLSearchParams(location.search).get("diff");
 
-const difficultyFunctions = { easy: easy, medium: medium, hard: hard };
+const difficultyFunctions = { level1, level2, level3 };
 
 const N_ROWS = 4;
 
@@ -11,11 +11,11 @@ let finished = false;
 
 let startTime = new Date().getTime();
 
-function easy() {}
+function level1() {}
 
-function medium() {}
+function level2() {}
 
-function hard() {}
+function level3() {}
 
 function error() {
   alert("PLEASE, DON'T PLAY WITH THE URL.\nTHANK YOU.");
@@ -113,9 +113,9 @@ function updateRowsObjects(rowsData) {
 
     // Image fillers
     let rect_size = row.w - ROW_PADDING * 2;
-    // set a minimum empty space size 
-    if(rect_size > (height / 2) - PADDING * 4)
-      rect_size = (height / 2) - PADDING * 4;
+    // set a minimum empty space size
+    if (rect_size > height / 2 - PADDING * 4)
+      rect_size = height / 2 - PADDING * 4;
 
     // top rect
     current.rect(ROW_PADDING, ROW_PADDING, rect_size, rect_size);
@@ -177,10 +177,7 @@ function setup() {
   console.log(`welcome, you choose ${difficulty} difficulty`);
   (difficultyFunctions[difficulty] || error)();
   // header = createDiv("welcome");
-  let cvx = createCanvas(
-    windowWidth,
-    windowHeight
-  );
+  let cvx = createCanvas(windowWidth, windowHeight);
 
   initRowsData();
   let counter = 0;
@@ -248,8 +245,7 @@ function touchEnded() {
         startEndNearest = endNearest[2];
         elseNearest = startNearest[2];
       }
-      console.log(startEndNearest, elseNearest)
-
+      console.log(startEndNearest, elseNearest);
 
       // WHAT IS THIS?????
       // I DON'T KNOW EITHER.
@@ -310,7 +306,7 @@ function drawWin() {
 }
 
 function draw() {
-  resizeCanvas(windowWidth - PADDING, windowHeight - PADDING);
+  resizeCanvas(windowWidth, windowHeight);
   background(33, 150, 243);
 
   if (finished) {
